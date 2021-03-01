@@ -23,9 +23,11 @@ TARGETS = $(BIN)supermarket $(LIB)libfifo_unbounded.so
 all: $(TARGETS)
 
 $(BIN)supermarket: $(OBJECTS) $(LIB)libfifo_unbounded.so
+	mkdir $(BIN)
 	$(CC) $(CFLAGS) $(INCLUDES) $(OBJECTS) -o $@ $(LFLAGS) $(LIBS)
 
 $(LIB)libfifo_unbounded.so: $(SRC)fifo_unbounded.o
+	mkdir $(LIB)
 	$(CC) -shared $< -o $@
 
 $(SRC)supermarket.o: $(SRC)supermarket.c
